@@ -276,6 +276,18 @@ async function main() {
     if (!bootSummary.hasSpinRule) {
       throw new Error('CSS @keyframes spin rule missing in built stylesheet!');
     }
+    const layoutCheck = await cdp.evaluate(`(() => {
+      window.scrollTo(0, 0);
+      const wrap = document.querySelector('.table-wrap');
+      return {
+        scrollY: window.scrollY,
+        tableOverflowPx: wrap ? wrap.scrollWidth - wrap.clientWidth : 0,
+        bodyHeight: document.body.scrollHeight,
+      };
+    })()`);
+    if (layoutCheck.tableOverflowPx > 2) {
+      throw new Error(`Spread Matrix horizontal overflow detected: ${layoutCheck.tableOverflowPx}px`);
+    }
     if (opts.captureDir) {
       await cdp.screenshot(path.join(opts.captureDir, '01-dashboard-live.png'));
     }

@@ -253,9 +253,9 @@ export async function fetchLiveMarketBundle(
     },
     {
       id: 'whsk-interpool',
-      pair: 'WHSK/USDT (0.05%↔0.30%)',
+      pair: 'WHSK 0.05↔0.30%',
       asset: 'WHSK',
-      venueLabel: 'HSKSwap Inter-Pool Arb',
+      venueLabel: 'HSKSwap Inter-Pool',
       poolAddress: HSK_MAINNET.pools.whskUsdt3000.address,
       poolFeeBps: 30,
       hskSwapPrice: pool3000.price,

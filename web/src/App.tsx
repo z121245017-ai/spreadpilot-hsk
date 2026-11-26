@@ -152,7 +152,7 @@ export default function App() {
   const [wallet, setWallet] = useState<WalletConnection | null>(null);
   const [walletErr, setWalletErr] = useState<string | null>(null);
 
-  const chatEndRef = useRef<HTMLDivElement | null>(null);
+  const chatStreamRef = useRef<HTMLDivElement | null>(null);
 
   const cooldownEndMs = lastSliceTimestamp + policy.minSliceIntervalSec * 1000;
   const cooldownRemainingSec = Math.max(0, Math.ceil((cooldownEndMs - nowMs) / 1000));
@@ -239,7 +239,9 @@ export default function App() {
   }, [syncFeeds]);
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatStreamRef.current) {
+      chatStreamRef.current.scrollTop = chatStreamRef.current.scrollHeight;
+    }
   }, [messages.length]);
 
   const executeOneSlice = useCallback(
@@ -673,7 +675,6 @@ export default function App() {
                     <th>Pair / Pool</th>
                     <th>HSKSwap</th>
                     <th>CEX Ref</th>
-                    <th>Gross</th>
                     <th>TWAP Plan</th>
                     <th>Net Edge</th>
                     <th>Action</th>
@@ -687,7 +688,7 @@ export default function App() {
                         <div className="pair-sub">
                           <span>{snap.venueLabel}</span>
                           {snap.isOnChainLive ? (
-                            <span className="tag emerald">ON-CHAIN 177</span>
+                            <span className="tag emerald">177 LIVE</span>
                           ) : (
                             <span className="tag muted">CEX LIVE</span>
                           )}
@@ -696,15 +697,14 @@ export default function App() {
                       <td className="mono">{fmtPrice(snap.hskSwapPrice)}</td>
                       <td className="mono">
                         <div>{fmtPrice(snap.cexMidPrice)}</div>
-                        <div style={{ fontSize: 10, color: '#8b9bb0' }}>{snap.cexSource}</div>
+                        <div style={{ fontSize: 9.5, color: '#8b9bb0' }}>{snap.cexSource}</div>
                       </td>
-                      <td className="mono">+{snap.grossSpreadBps} bps</td>
                       <td className="mono">
                         <div>
                           {snap.twapSlices}× ${snap.twapSliceUsd.toFixed(0)}
                         </div>
-                        <div style={{ fontSize: 10, color: '#34d399' }}>
-                          saves {snap.bpsSavedByTwap} bps
+                        <div style={{ fontSize: 9.5, color: '#34d399' }}>
+                          -{snap.bpsSavedByTwap} bps
                         </div>
                       </td>
                       <td className="mono">
@@ -720,6 +720,9 @@ export default function App() {
                           {snap.netEdgeBps >= 0 ? '+' : ''}
                           {snap.netEdgeBps} bps
                         </span>
+                        <div style={{ fontSize: 9.5, color: '#8b9bb0', marginTop: 2 }}>
+                          gross +{snap.grossSpreadBps}
+                        </div>
                       </td>
                       <td>
                         <button
@@ -728,7 +731,7 @@ export default function App() {
                           type="button"
                           title={snap.signalNote}
                         >
-                          {snap.signal === 'EXECUTE_TWAP' ? 'Stage TWAP' : 'Test Gate'}
+                          {snap.signal === 'EXECUTE_TWAP' ? 'Stage' : 'Gate'}
                         </button>
                       </td>
                     </tr>
@@ -862,7 +865,7 @@ export default function App() {
               ))}
             </div>
 
-            <div className="chat-stream">
+            <div className="chat-stream" ref={chatStreamRef}>
               {messages.map((m) => (
                 <div key={m.id} className={`msg ${m.role}`}>
                   <div className="msg-meta">
@@ -933,7 +936,6 @@ export default function App() {
                   )}
                 </div>
               ))}
-              <div ref={chatEndRef} />
             </div>
 
             <form
@@ -947,7 +949,7 @@ export default function App() {
                 className="chat-input"
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
-                placeholder='e.g. "Conservative mode, cap slice $150, stop-loss 3%, buy $400 WHSK TWAP"'
+                placeholder='Try: "Conservative, slice $120, SL 2.5%" or "Buy $450 WHSK TWAP"'
               />
               <button className="btn primary" type="submit">
                 <Send size={13} />
@@ -1099,24 +1101,7 @@ export default function App() {
             </div>
             <div className="panel-body">
               <div className="audit-list">
-                {getVerifiedTestnetTxs().map((tx) => (
-                  <div key={tx.txHash} className="audit-item" style={{ borderColor: 'rgba(56,189,248,0.4)' }}>
-                    <div className="audit-head">
-                      <span>{tx.label}</span>
-                      <a
-                        className="ext-link mono"
-                        href={tx.explorerUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {shortHash(tx.txHash)} <ExternalLink size={11} />
-                      </a>
-                    </div>
-                    <div className="audit-detail">{tx.summary}</div>
-                  </div>
-                ))}
-
-                {auditLog.slice(0, 8).map((entry) => (
+                {auditLog.slice(0, 6).map((entry) => (
                   <div key={entry.id} className="audit-item">
                     <div className="audit-head">
                       <span>{entry.summary}</span>
@@ -1139,6 +1124,29 @@ export default function App() {
                   </div>
                 ))}
               </div>
+
+              {getVerifiedTestnetTxs().length > 0 && (
+                <div>
+                  <div className="rail-k" style={{ marginBottom: 4 }}>
+                    Live HSK Testnet (133) Explorer Proofs ({getVerifiedTestnetTxs().length} confirmed)
+                  </div>
+                  <div className="tx-chip-grid">
+                    {getVerifiedTestnetTxs().slice(0, 6).map((tx) => (
+                      <a
+                        key={tx.txHash}
+                        className="tx-chip mono"
+                        href={tx.explorerUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        title={tx.summary}
+                      >
+                        <span>{tx.label.replace('HSK 133 · ', '')}</span>
+                        <ExternalLink size={9} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="audit-detail mono" style={{ borderTop: '1px solid #1d2b3b', paddingTop: 8 }}>
                 Live Pools:{' '}
