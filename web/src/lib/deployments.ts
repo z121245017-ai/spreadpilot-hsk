@@ -34,7 +34,7 @@ export const HSK_TESTNET = {
   chainIdHex: '0x85',
   name: 'HSKChain Testnet',
   rpcUrl: 'https://testnet.hsk.xyz',
-  explorer: 'https://testnet-explorer.hsk.xyz',
+  explorer: 'https://testnet-explorer.hskchain.net',
   hskSwapRouter02: '0x46cBccE3c74E95d1761435d52B0b9Abc9e2FEAC0',
   hskSwapFactory: '0x2dC2c21D1049F786C535bF9d45F999dB5474f3A0',
 } as const;
@@ -75,22 +75,63 @@ export interface ExplorerTxLink {
   explorerUrl: string;
 }
 
-// Updated automatically once DeployHSKTestnet.s.sol + RunDemoScenario.s.sol broadcast on Chain ID 133
+// Live verified deployment on HSKChain Testnet (Chain ID 133) via DeployHSKTestnet.s.sol + RunDemoScenario.s.sol
 export const TESTNET_DEPLOYMENT: TestnetDeploymentRecord = {
-  status: 'PENDING_BROADCAST',
+  status: 'DEPLOYED_LIVE',
   chainId: 133,
-  deployer: '0x0Cf943E4043b47D2ccba0ca94a2d45989a3fF260',
-  vaultAddress: ZERO_ADDRESS,
-  lensAddress: ZERO_ADDRESS,
-  adapterAddress: ZERO_ADDRESS,
-  poolAddress: ZERO_ADDRESS,
+  deployer: '0xEcA8Ac4BE10da6977f19Dc7D85Bb5951914B97B5',
+  vaultAddress: '0xA681677D5c9142751682D384a92eA9c125782A51',
+  lensAddress: '0xfF1E8e50C8895897C00a0c801E73abE2F1337edA',
+  adapterAddress: '0x48eba200ACC1C45bC83eF9a5c1445d690470453E',
+  poolAddress: '0x6Ad9eF968B424FFEe9ca062Ff88200F6Fb23f1Ee',
   tokens: {
-    tWHSK: ZERO_ADDRESS,
-    tUSDT: ZERO_ADDRESS,
-    tWETH: ZERO_ADDRESS,
-    tWBTC: ZERO_ADDRESS,
+    tWHSK: '0xF7Cbd0ca6c7A7360C9792fE3CE94656a4A01070B',
+    tUSDT: '0xcA6cbb96309777FD4D38fad4Ff83315c80401124',
+    tWETH: '0xAa91700f39D538E1C36e0d46d489d0D016a7Ee1B',
+    tWBTC: '0xc14fe8D1781574a8630e4Fc2a381854BE4d0621e',
   },
-  verifiedTxs: [],
+  verifiedTxs: [
+    {
+      label: 'HSK 133 · Deposit 3,000 tUSDT',
+      txHash: '0xa3539b28797f95a9e07e314f520f95422d66a8668470a6316830dd1abb5d6712',
+      summary: 'Non-custodial owner deposit into SpreadPilotVault (HWM anchored at $3,000)',
+    },
+    {
+      label: 'HSK 133 · Chat Policy Update',
+      txHash: '0x809f674ade515f2eee5e2ad8433b6e34a5e02d6e50543a65ae2b33e3e97d305f',
+      summary: 'updatePolicy(BALANCED, maxSlice=$1,000, minEdge=15bps, stopLoss=5%, chatIntentHash)',
+    },
+    {
+      label: 'HSK 133 · Create 3-Slice TWAP',
+      txHash: '0x3cdef6840834d69e28314263e82e734d8ccc2016c0cef1a42bf67e5dcb5489c4',
+      summary: 'createTwapPlan(3,000 tUSDT -> tWHSK, 3 slices × 1,000 tUSDT · lens saves 686 bps)',
+    },
+    {
+      label: 'HSK 133 · Execute Slice #1 (+28 bps)',
+      txHash: '0x5c9fb51cfcbb175d9c112b181e77935d164dd58a790374ca414765e0b4796ea4',
+      summary: '1,000 tUSDT -> 2,003.9975 tWHSK via ISwapRouter02 · +686 bps impact saved',
+    },
+    {
+      label: 'HSK 133 · Execute Slice #2 (+22 bps)',
+      txHash: '0xf698fcc3283626e787fed949830c36d96ace8568e150f569abebe07676f2a28b',
+      summary: '1,000 tUSDT -> 2,003.9975 tWHSK · realized edge +3.9975 tUSDT (1,372 bps saved)',
+    },
+    {
+      label: 'HSK 133 · Refusal Proof (+6 bps < 15)',
+      txHash: '0xc3faa7897d6e320cea033189ce44f0ce469a15320cbd021746288ba1deeb161a',
+      summary: 'logRefusedOpportunity(REFUSAL_SPREAD_BELOW_MIN) without moving vault funds',
+    },
+    {
+      label: 'HSK 133 · Stop-Loss Breaker Tripped',
+      txHash: '0x130ad06a691a9583b3ff8a8e35cfa0eb1ba20702f1923746862b2cb007182e5d',
+      summary: 'reportMarkToMarketAndCheckStopLoss(-6.67% > 5% rail) -> circuitBreakerTripped=true',
+    },
+    {
+      label: 'HSK 133 · Slice #3 Blocked Proof',
+      txHash: '0xe7dcf09d43c033d336886902492167c8ae4e746aa17a1d14900dff0216e9a26d',
+      summary: 'logRefusedOpportunity(REFUSAL_CIRCUIT_BREAKER) · staticcall verified Slice #3 reverts',
+    },
+  ],
 };
 
 export function isZeroAddress(address?: string): boolean {

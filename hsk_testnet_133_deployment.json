@@ -1,0 +1,270 @@
+{
+  "deployer": "0xEcA8Ac4BE10da6977f19Dc7D85Bb5951914B97B5",
+  "chainId": 133,
+  "addresses": {
+    "tWHSK": "0xF7Cbd0ca6c7A7360C9792fE3CE94656a4A01070B",
+    "tUSDT": "0xcA6cbb96309777FD4D38fad4Ff83315c80401124",
+    "tWETH": "0xAa91700f39D538E1C36e0d46d489d0D016a7Ee1B",
+    "tWBTC": "0xc14fe8D1781574a8630e4Fc2a381854BE4d0621e",
+    "lens": "0xfF1E8e50C8895897C00a0c801E73abE2F1337edA",
+    "pool": "0x6Ad9eF968B424FFEe9ca062Ff88200F6Fb23f1Ee",
+    "adapter": "0x48eba200ACC1C45bC83eF9a5c1445d690470453E",
+    "vault": "0xA681677D5c9142751682D384a92eA9c125782A51"
+  },
+  "deployTxs": [
+    {
+      "hash": "0x3f80a8353c474046e47ff0991db7a9b0e5b55b5530f28fd7e7a789751a394973",
+      "type": "CREATE",
+      "contractName": "TestnetMintableERC20",
+      "function": null,
+      "contractAddress": "0xf7cbd0ca6c7a7360c9792fe3ce94656a4a01070b"
+    },
+    {
+      "hash": "0x0aaf85354ead2d04b88acc121253ae41e1efd02f4cc404c1d455ff5664799e93",
+      "type": "CREATE",
+      "contractName": "TestnetMintableERC20",
+      "function": null,
+      "contractAddress": "0xca6cbb96309777fd4d38fad4ff83315c80401124"
+    },
+    {
+      "hash": "0x00ad8aae463b53149568a5b7ae8876cac3673f2209de76095e85ce62aa24e889",
+      "type": "CREATE",
+      "contractName": "TestnetMintableERC20",
+      "function": null,
+      "contractAddress": "0xaa91700f39d538e1c36e0d46d489d0d016a7ee1b"
+    },
+    {
+      "hash": "0xb9bcf87c66443aafbfcaaf8492976b89289d827603db6cca3971facdabc75a9e",
+      "type": "CREATE",
+      "contractName": "TestnetMintableERC20",
+      "function": null,
+      "contractAddress": "0xc14fe8d1781574a8630e4fc2a381854be4d0621e"
+    },
+    {
+      "hash": "0x32c4c7fa8f3603df14ddf7eb63997250edc85d4e1b2bf7b9aa5db753246694ff",
+      "type": "CREATE",
+      "contractName": "HSKSwapLiquidityLens",
+      "function": null,
+      "contractAddress": "0xff1e8e50c8895897c00a0c801e73abe2f1337eda"
+    },
+    {
+      "hash": "0x4c40358db3a3f79317a1f79932d85c349c6cd6263911e2da5a54f944dbc1e587",
+      "type": "CREATE",
+      "contractName": "TestnetHSKSwapAdapter",
+      "function": null,
+      "contractAddress": "0x48eba200acc1c45bc83ef9a5c1445d690470453e"
+    },
+    {
+      "hash": "0x4fb001abfa0e49453d84f8ec351557e72f56859724d956a26a28f30f252ea862",
+      "type": "CREATE",
+      "contractName": "TestnetV3Pool",
+      "function": null,
+      "contractAddress": "0x6ad9ef968b424ffee9ca062ff88200f6fb23f1ee"
+    },
+    {
+      "hash": "0x4f70618e5a7eb4f6085be722c73a3fcdc82e2c251b41d4ce19b33f058908fa5e",
+      "type": "CALL",
+      "contractName": "TestnetMintableERC20",
+      "function": "mint(address,uint256)",
+      "contractAddress": "0xf7cbd0ca6c7a7360c9792fe3ce94656a4a01070b"
+    },
+    {
+      "hash": "0x2ef193e02ae99741bdbd638d2978cad5c12879b1a7d688b7a27717093a3e08ee",
+      "type": "CALL",
+      "contractName": "TestnetMintableERC20",
+      "function": "mint(address,uint256)",
+      "contractAddress": "0xca6cbb96309777fd4d38fad4ff83315c80401124"
+    },
+    {
+      "hash": "0x9ae65b1d3fd15bd0a33265e0576d5c036c905a3b86e40bd242fbe26721969088",
+      "type": "CALL",
+      "contractName": "TestnetMintableERC20",
+      "function": "mint(address,uint256)",
+      "contractAddress": "0xaa91700f39d538e1c36e0d46d489d0d016a7ee1b"
+    },
+    {
+      "hash": "0x5d328286f05223b8fd3dc7cc75ac8584ae7002127035ec340558a180d7634815",
+      "type": "CALL",
+      "contractName": "TestnetMintableERC20",
+      "function": "mint(address,uint256)",
+      "contractAddress": "0xc14fe8d1781574a8630e4fc2a381854be4d0621e"
+    },
+    {
+      "hash": "0x83318c657f9e6f0b1319ca6899a71b6247c7b0cea2dd7f652b202571dca19d34",
+      "type": "CALL",
+      "contractName": "TestnetHSKSwapAdapter",
+      "function": "setPairConfig(address,address,uint256,uint128,int16)",
+      "contractAddress": "0x48eba200acc1c45bc83ef9a5c1445d690470453e"
+    },
+    {
+      "hash": "0x5a9dace485d9d65d9fdf58d8953c7a95083234bd203889cb7c32148d06c0c262",
+      "type": "CALL",
+      "contractName": "TestnetHSKSwapAdapter",
+      "function": "setPairConfig(address,address,uint256,uint128,int16)",
+      "contractAddress": "0x48eba200acc1c45bc83ef9a5c1445d690470453e"
+    },
+    {
+      "hash": "0x314bec660610503acc1db8e655cb01ce8d1a38c7280a32795865c297d1eaf18c",
+      "type": "CALL",
+      "contractName": "TestnetHSKSwapAdapter",
+      "function": "setPairConfig(address,address,uint256,uint128,int16)",
+      "contractAddress": "0x48eba200acc1c45bc83ef9a5c1445d690470453e"
+    },
+    {
+      "hash": "0xefd0b775a06cde52ad424b6f5f3e1facb8d2c803fc5a8005296166e4fc570c16",
+      "type": "CALL",
+      "contractName": "TestnetHSKSwapAdapter",
+      "function": "setPairConfig(address,address,uint256,uint128,int16)",
+      "contractAddress": "0x48eba200acc1c45bc83ef9a5c1445d690470453e"
+    },
+    {
+      "hash": "0xee99aebe2314ba04869f3f4c9a65731da1744415420243645c46903c2f4aa59f",
+      "type": "CALL",
+      "contractName": "TestnetHSKSwapAdapter",
+      "function": "setPairConfig(address,address,uint256,uint128,int16)",
+      "contractAddress": "0x48eba200acc1c45bc83ef9a5c1445d690470453e"
+    },
+    {
+      "hash": "0xad6df7332ab8b97bb0e069f396e8d599748176fcd5186a8ba9b2b7448b87a6f7",
+      "type": "CALL",
+      "contractName": "TestnetHSKSwapAdapter",
+      "function": "setPairConfig(address,address,uint256,uint128,int16)",
+      "contractAddress": "0x48eba200acc1c45bc83ef9a5c1445d690470453e"
+    },
+    {
+      "hash": "0x01d5f1975b8efdc09f380fe875fb007f8551a956c9979bb87dd2a99e518b92a1",
+      "type": "CREATE",
+      "contractName": "SpreadPilotVault",
+      "function": null,
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x7966c9e6235caff2671446aea158041347662c0a15f6aae214c3f3e413eb055d",
+      "type": "CALL",
+      "contractName": "SpreadPilotVault",
+      "function": "setAllowedToken(address,bool)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x165c4a412a62cba9be270fc07c721c26c39238a07a65fcc04975ee318cb1d480",
+      "type": "CALL",
+      "contractName": "SpreadPilotVault",
+      "function": "setAllowedToken(address,bool)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x8dd415ebb8134feef8075609993aa5bfcfc91e8d80138e7daca7dadf7936857b",
+      "type": "CALL",
+      "contractName": "SpreadPilotVault",
+      "function": "setAllowedToken(address,bool)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x13751ad5fb2a9ebb45d43cf7109cb41bc4dfc3ab3d74daa692fd7ce7e21a3677",
+      "type": "CALL",
+      "contractName": "SpreadPilotVault",
+      "function": "setAllowedRouter(address,bool)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x3af5fb7ceb46e91bf5b7bb7d2ccf58e55521efbd13ccfd8c9876ffa0a4113ccb",
+      "type": "CALL",
+      "contractName": "SpreadPilotVault",
+      "function": "setAllowedRouter(address,bool)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0xac6a4c052557e2136295bcee92d68f168a15c19b318693d4b3924eaf8b8797c5",
+      "type": "CALL",
+      "contractName": "SpreadPilotVault",
+      "function": "setAuthorizedAgent(address,uint64)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x8d0720e5b75ae90f09dd5f4be227612e5a56acae943beccd3032df5db171c8b6",
+      "type": "CALL",
+      "contractName": "SpreadPilotVault",
+      "function": "applyRiskPreset(uint8)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0xa5ac21bc730255e08f86fdae0e8cbb28d396a322bdd6784873f8945da58738c5",
+      "type": "CALL",
+      "contractName": "TestnetMintableERC20",
+      "function": "mint(address,uint256)",
+      "contractAddress": "0xca6cbb96309777fd4d38fad4ff83315c80401124"
+    },
+    {
+      "hash": "0xf72f8740bf5bae0ec6b70ffcc66e950a4cecfede536be31fd43416ba9a69e18e",
+      "type": "CALL",
+      "contractName": "TestnetMintableERC20",
+      "function": "mint(address,uint256)",
+      "contractAddress": "0xf7cbd0ca6c7a7360c9792fe3ce94656a4a01070b"
+    }
+  ],
+  "demoTxs": [
+    {
+      "hash": "0x3059075025e0746eab894e8753543f285a38a016a9b30364e2dca79a64d70b32",
+      "type": "CALL",
+      "contractName": null,
+      "function": "approve(address,uint256)",
+      "contractAddress": "0xca6cbb96309777fd4d38fad4ff83315c80401124"
+    },
+    {
+      "hash": "0xa3539b28797f95a9e07e314f520f95422d66a8668470a6316830dd1abb5d6712",
+      "type": "CALL",
+      "contractName": null,
+      "function": "deposit(address,uint256)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x809f674ade515f2eee5e2ad8433b6e34a5e02d6e50543a65ae2b33e3e97d305f",
+      "type": "CALL",
+      "contractName": null,
+      "function": "updatePolicy((uint256,uint256,uint32,int32,uint16,uint16,uint256,uint16,uint64,bool,uint8),bytes32)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x3cdef6840834d69e28314263e82e734d8ccc2016c0cef1a42bf67e5dcb5489c4",
+      "type": "CALL",
+      "contractName": null,
+      "function": "createTwapPlan(address,address,uint24,uint256,uint16,int32,uint16,uint256)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x5c9fb51cfcbb175d9c112b181e77935d164dd58a790374ca414765e0b4796ea4",
+      "type": "CALL",
+      "contractName": null,
+      "function": "executeSpreadSlice(uint256,address,uint256,uint256,int32,uint16,bytes32)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0xf698fcc3283626e787fed949830c36d96ace8568e150f569abebe07676f2a28b",
+      "type": "CALL",
+      "contractName": null,
+      "function": "executeSpreadSlice(uint256,address,uint256,uint256,int32,uint16,bytes32)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0xc3faa7897d6e320cea033189ce44f0ce469a15320cbd021746288ba1deeb161a",
+      "type": "CALL",
+      "contractName": null,
+      "function": "logRefusedOpportunity(address,address,int32,uint8,bytes32)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0x130ad06a691a9583b3ff8a8e35cfa0eb1ba20702f1923746862b2cb007182e5d",
+      "type": "CALL",
+      "contractName": null,
+      "function": "reportMarkToMarketAndCheckStopLoss(uint256)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    },
+    {
+      "hash": "0xe7dcf09d43c033d336886902492167c8ae4e746aa17a1d14900dff0216e9a26d",
+      "type": "CALL",
+      "contractName": null,
+      "function": "logRefusedOpportunity(address,address,int32,uint8,bytes32)",
+      "contractAddress": "0xa681677d5c9142751682d384a92ea9c125782a51"
+    }
+  ]
+}

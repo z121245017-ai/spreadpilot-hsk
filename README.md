@@ -5,8 +5,13 @@
 
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.28%20(Paris%20EVM)-363636)](contracts/foundry.toml)
 [![Foundry Tests](https://img.shields.io/badge/Foundry%20Tests-24%2F24%20(1%2C536%20fuzz%20runs)-10b981)](contracts/test/)
+[![HSK Testnet 133](https://img.shields.io/badge/HSK%20Testnet%20133-Live%20Deployed%20%2B%209%20Txs-38bdf8)](https://testnet-explorer.hskchain.net/address/0xA681677D5c9142751682D384a92eA9c125782A51)
 [![Web Tests](https://img.shields.io/badge/Vitest%20%2B%20TypeScript-5%2F5%20passing-38bdf8)](web/src/lib/spreadEngine.test.ts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+- **Live Interactive Trading Desk**: https://z121245017-ai.github.io/spreadpilot-hsk/
+- **Demo Video (1280×720 HD)**: https://cdn.jsdelivr.net/gh/z121245017-ai/spreadpilot-hsk@gh-pages/demo.mp4
+- **Live Deployed Vault (HSK Testnet 133)**: https://testnet-explorer.hskchain.net/address/0xA681677D5c9142751682D384a92eA9c125782A51
 
 ---
 
@@ -124,22 +129,37 @@ cd web && npm install && npm run dev
 | **WETH (18 dec)** | [`0xefd4bC9afD210517803f293ABABd701CaeeCdfd0`](https://hsk.blockscout.com/address/0xefd4bC9afD210517803f293ABABd701CaeeCdfd0) | Mainnet WETH |
 | **WBTC (8 dec)** | [`0x6119ca49a79f5825c8b345f8d7ac36b272565b14`](https://hsk.blockscout.com/address/0x6119ca49a79f5825c8b345f8d7ac36b272565b14) | Mainnet WBTC |
 
-### HSK Chain Testnet (`Chain ID 133`) — Deployment & E2E Proof Table
+### HSK Chain Testnet (`Chain ID 133`) — Live Deployed Contracts & Verified E2E Proofs
 
-- **RPC**: `https://testnet.hsk.xyz` · **Explorer**: `https://testnet-explorer.hsk.xyz`
+- **RPC**: `https://testnet.hsk.xyz` · **Explorer**: `https://testnet-explorer.hskchain.net`
+- **Deployer**: [`0xEcA8Ac4BE10da6977f19Dc7D85Bb5951914B97B5`](https://testnet-explorer.hskchain.net/address/0xEcA8Ac4BE10da6977f19Dc7D85Bb5951914B97B5)
 
-| Component | Address / Status |
+| Component | Live Address on HSKChain Testnet (`133`) |
 | :--- | :--- |
-| **Official HSKSwap SwapRouter02** | [`0x46cBccE3c74E95d1761435d52B0b9Abc9e2FEAC0`](https://testnet-explorer.hsk.xyz/address/0x46cBccE3c74E95d1761435d52B0b9Abc9e2FEAC0) |
-| **Official HSKSwap V3 Factory** | [`0x2dC2c21D1049F786C535bF9d45F999dB5474f3A0`](https://testnet-explorer.hsk.xyz/address/0x2dC2c21D1049F786C535bF9d45F999dB5474f3A0) |
-| **`SpreadPilotVault`** | `[Pending HSK Testnet broadcast — ready via DeployHSKTestnet.s.sol]` |
-| **`HSKSwapLiquidityLens`** | `[Pending HSK Testnet broadcast — ready via DeployHSKTestnet.s.sol]` |
-| **`TestnetHSKSwapAdapter`** | `[Pending HSK Testnet broadcast — ready via DeployHSKTestnet.s.sol]` |
-| **`TestnetV3Pool` (`tWHSK/tUSDT` 0.05%)** | `[Pending HSK Testnet broadcast — ready via DeployHSKTestnet.s.sol]` |
-| **Testnet Tokens (`tWHSK`, `tUSDT`, `tWETH`, `tWBTC`)** | `[Pending HSK Testnet broadcast — ready via DeployHSKTestnet.s.sol]` |
-| **E2E Demo Scenario Txs (Deposit, Chat Policy, TWAP Slices, Refusal Proof, Stop-Loss Trip)** | `[Pending HSK Testnet broadcast — ready via RunDemoScenario.s.sol]` |
+| **Official HSKSwap SwapRouter02** | [`0x46cBccE3c74E95d1761435d52B0b9Abc9e2FEAC0`](https://testnet-explorer.hskchain.net/address/0x46cBccE3c74E95d1761435d52B0b9Abc9e2FEAC0) |
+| **Official HSKSwap V3 Factory** | [`0x2dC2c21D1049F786C535bF9d45F999dB5474f3A0`](https://testnet-explorer.hskchain.net/address/0x2dC2c21D1049F786C535bF9d45F999dB5474f3A0) |
+| **`SpreadPilotVault`** | [`0xA681677D5c9142751682D384a92eA9c125782A51`](https://testnet-explorer.hskchain.net/address/0xA681677D5c9142751682D384a92eA9c125782A51) |
+| **`HSKSwapLiquidityLens`** | [`0xfF1E8e50C8895897C00a0c801E73abE2F1337edA`](https://testnet-explorer.hskchain.net/address/0xfF1E8e50C8895897C00a0c801E73abE2F1337edA) |
+| **`TestnetHSKSwapAdapter` (`ISwapRouter02`)** | [`0x48eba200ACC1C45bC83eF9a5c1445d690470453E`](https://testnet-explorer.hskchain.net/address/0x48eba200ACC1C45bC83eF9a5c1445d690470453E) |
+| **`TestnetV3Pool` (`tWHSK/tUSDT` 0.05%)** | [`0x6Ad9eF968B424FFEe9ca062Ff88200F6Fb23f1Ee`](https://testnet-explorer.hskchain.net/address/0x6Ad9eF968B424FFEe9ca062Ff88200F6Fb23f1Ee) |
+| **Testnet Tokens (`tWHSK` / `tUSDT` / `tWETH` / `tWBTC`)** | `0xF7Cb...070B` / `0xcA6c...1124` / `0xAa91...Ee1B` / `0xc14f...621e` |
 
-#### Deploying & Broadcasting the E2E Scenario on HSK Testnet (`133`)
+#### Verified On-Chain E2E Execution Proof (`RunDemoScenario.s.sol` on Chain ID `133`)
+
+Every step of the autonomous trading, TWAP splitting, refusal logging, and stop-loss circuit-breaker lifecycle has been broadcast and confirmed live on **HSKChain Testnet (`133`)** (`realizedPnlQuote = +3.9975 tUSDT`, `cumulativeSlippageSavedBps = 1,372 bps`, `totalSlicesExecuted = 2`, `totalRefusalsLogged = 2`, `circuitBreakerTripped = true`):
+
+| Step | Action | Live HSK Testnet Explorer Receipt |
+| :---: | :--- | :--- |
+| **1** | Deposit `3,000 tUSDT` into `SpreadPilotVault` | [`0xa3539b28...abb5d6712`](https://testnet-explorer.hskchain.net/tx/0xa3539b28797f95a9e07e314f520f95422d66a8668470a6316830dd1abb5d6712) |
+| **2** | Conversational `updatePolicy` anchored by `chatIntentHash` | [`0x809f674a...e97d305f`](https://testnet-explorer.hskchain.net/tx/0x809f674ade515f2eee5e2ad8433b6e34a5e02d6e50543a65ae2b33e3e97d305f) |
+| **3** | `createTwapPlan` (3 × `1,000 tUSDT` -> `tWHSK`, lens saves `686 bps`) | [`0x3cdef684...cb5489c4`](https://testnet-explorer.hskchain.net/tx/0x3cdef6840834d69e28314263e82e734d8ccc2016c0cef1a42bf67e5dcb5489c4) |
+| **4** | `executeSpreadSlice` #1 (`+28 bps` edge -> `2,003.9975 tWHSK`) | [`0x5c9fb51c...b4796ea4`](https://testnet-explorer.hskchain.net/tx/0x5c9fb51cfcbb175d9c112b181e77935d164dd58a790374ca414765e0b4796ea4) |
+| **5** | `executeSpreadSlice` #2 (`+22 bps` edge -> `2,003.9975 tWHSK`) | [`0xf698fcc3...6f2a28b`](https://testnet-explorer.hskchain.net/tx/0xf698fcc3283626e787fed949830c36d96ace8568e150f569abebe07676f2a28b) |
+| **6** | `logRefusedOpportunity` (`+6 bps < +15 bps` min edge, 0 funds moved) | [`0xc3faa789...deeb161a`](https://testnet-explorer.hskchain.net/tx/0xc3faa7897d6e320cea033189ce44f0ce469a15320cbd021746288ba1deeb161a) |
+| **7** | `reportMarkToMarketAndCheckStopLoss` (`-6.67% > 5%` -> breaker tripped) | [`0x130ad06a...07182e5d`](https://testnet-explorer.hskchain.net/tx/0x130ad06a691a9583b3ff8a8e35cfa0eb1ba20702f1923746862b2cb007182e5d) |
+| **8** | `logRefusedOpportunity` (`REFUSAL_CIRCUIT_BREAKER`, Slice #3 blocked) | [`0xe7dcf09d...16e9a26d`](https://testnet-explorer.hskchain.net/tx/0xe7dcf09d43c033d336886902492167c8ae4e746aa17a1d14900dff0216e9a26d) |
+
+#### Reproducing Deployment & E2E Scenario on HSK Testnet (`133`)
 
 ```bash
 # 1. Deploy core contracts + testnet liquidity mirror
@@ -148,15 +168,13 @@ PRIVATE_KEY=0x<FUNDED_HSK_TESTNET_KEY> \
   forge script script/DeployHSKTestnet.s.sol:DeployHSKTestnet \
   --rpc-url hsk_testnet --broadcast --legacy
 
-# 2. Execute full on-chain demo scenario (deposit -> policy -> TWAP slices -> refusal -> stop-loss trip)
+# 2. Execute full on-chain demo scenario
 PRIVATE_KEY=0x<FUNDED_HSK_TESTNET_KEY> \
 VAULT_ADDRESS=0x... ADAPTER_ADDRESS=0x... LENS_ADDRESS=0x... \
 TUSDT_ADDRESS=0x... TWHSK_ADDRESS=0x... POOL_ADDRESS=0x... \
   forge script script/RunDemoScenario.s.sol:RunDemoScenario \
   --rpc-url hsk_testnet --broadcast --legacy
 ```
-
-Once broadcast completes, updating `TESTNET_DEPLOYMENT` in [`web/src/lib/deployments.ts`](web/src/lib/deployments.ts) (`status: 'DEPLOYED_LIVE'`, contract addresses, and `verifiedTxs`) automatically lights up live `testnet-explorer.hsk.xyz` contract & transaction links across the entire web trading desk.
 
 ---
 

@@ -330,6 +330,9 @@ async function main() {
       `document.body.innerText.includes('OPPORTUNITY REFUSED') && document.body.innerText.includes('ASSET_NOT_ALLOWED')`,
       'Verifiable refusal proof logged (ASSET_NOT_ALLOWED)',
     );
+    if (opts.captureDir) {
+      await cdp.screenshot(path.join(opts.captureDir, '04-allowlist-refusal.png'));
+    }
 
     // 6. Stress-Test Stop-Loss -> verifies BREAKER TRIPPED + active plan BLOCKED
     await clickButtonByText(cdp, 'Stress-Test Stop-Loss');
@@ -339,7 +342,7 @@ async function main() {
       'Stop-loss circuit breaker tripped and active TWAP blocked',
     );
     if (opts.captureDir) {
-      await cdp.screenshot(path.join(opts.captureDir, '04-breaker-tripped.png'));
+      await cdp.screenshot(path.join(opts.captureDir, '05-breaker-tripped.png'));
     }
 
     // 7. Owner Reset Breaker -> verifies RAILS ARMED restored
@@ -349,6 +352,9 @@ async function main() {
       `document.body.innerText.includes('RAILS ARMED') && !document.body.innerText.includes('Stop-Loss Circuit Breaker Active')`,
       'Circuit breaker reset and RAILS ARMED restored',
     );
+    if (opts.captureDir) {
+      await cdp.screenshot(path.join(opts.captureDir, '06-owner-reset-armed.png'));
+    }
 
     if (pageErrors.length > 0) {
       throw new Error(`Uncaught page errors detected: ${pageErrors.join(' | ')}`);
